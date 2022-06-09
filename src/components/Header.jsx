@@ -1,10 +1,11 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import CartBtn from './buttons/CartBtn';
-import Login from './buttons/Login';
-import SignUp from './buttons/SignUp';
+import Login from './Login/Login';
+import SignUp from './SignUp/SignUp';
 import LogOut from './buttons/Logout';
 import { UserAuth } from './context/AuthContext';
+import { Button } from '@mui/material';
 const Header = () => {
   const { user } = UserAuth();
   return (
@@ -47,10 +48,18 @@ const Header = () => {
             <NavLink className="navbar-brand mx-auto fw-bold" to="/">
               AppleMart
             </NavLink>
-            <Login />
-            <SignUp />
-            <LogOut />
+            <Link style={{textDecoration: 'none'}} to="/login">
+            <Button style={{textDecoration: 'none'}} >
+            <span className='fa fa-sign-in me-1'></span> Login
+            </Button>
+            </Link>
+            <Link style={{textDecoration: 'none'}}  to='/register'>
+              <Button style={{textDecoration: 'none'}}>
+              <span className="fa fa-user-plus me-1"></span> Register
+              </Button>
+            </Link>
 
+            <LogOut />
             <div className="user_name py-4">
               <h5>
               Email:{user && user.email}</h5>

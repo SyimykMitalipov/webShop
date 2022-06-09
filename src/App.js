@@ -12,6 +12,8 @@ import ProductDetail from './components/ProductDetail';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import { AuthContextProvider } from './components/context/AuthContext';
+import Login from './components/Login/Login';
+import SignUp from './components/SignUp/SignUp';
 function App() {
   return (
     <>
@@ -25,6 +27,9 @@ function App() {
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/products/:id" component={ProductDetail} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={SignUp} />
+
         <Redirect to="/" />
       </Switch>
     </AuthContextProvider>

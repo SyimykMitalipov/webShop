@@ -1,22 +1,31 @@
 import { createContext, useContext } from "react";
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword, signOut , onAuthStateChanged} from "firebase/auth";
 import { useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 import { auth } from "../../firebase";
-const UserContext =  createContext()
+import { useHistory } from "react-router-dom";
 
+const UserContext =  createContext()
 
 
 export const AuthContextProvider = ({children}) => {
     const [user,setUser] = useState()
+    const history = useHistory()
+
 
     const createUser = (email, password) => {
-        return createUserWithEmailAndPassword(auth,email,password)
+         createUserWithEmailAndPassword(auth,email,password)
+        history.push('/')
     }
     const signIn = (email,password) => {
-        return signInWithEmailAndPassword(auth,email,password)
+        signInWithEmailAndPassword(auth,email,password)
+       history.push('/')
+
+
     }
     const logOut = () => {
         signOut(auth)
+        window.location.reload()
     } 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {

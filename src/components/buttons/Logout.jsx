@@ -1,5 +1,6 @@
 import React from 'react'
 import { UserAuth } from '../context/AuthContext'
+import { Button } from '@mui/material'
 const LogOut = () => {
     const {logOut} = UserAuth()
     const handleOut = async (e) => {
@@ -14,14 +15,10 @@ const LogOut = () => {
 
     }
   return (
-    <button
-    onClick={() => handleOut()}
-    type="button"
-    className="btn btn-outline-primary"
-    id='btn_logout'
-    >
+    <Button
+    onClick={() => handleOut()}>
     <span className='fa fa-sign-in me-1'></span> Log Out
-  </button>
+  </Button>
   )
 }
 
